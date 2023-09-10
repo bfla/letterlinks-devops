@@ -1,6 +1,4 @@
 # Devops
-## Getting started with local development
-Ensure you have Docker and docker-compose installed locally.
 
 ## Getting started with Terragrunt/Terraform
 ### Dependencies & Prerequisites

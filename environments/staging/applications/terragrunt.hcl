@@ -12,8 +12,8 @@ terraform {
 inputs = {
   stage                         = "${local.stage}"
   image_tag                     = local.stage == "prod" ? "latest" : "staging"
-  sld                           = "letterlinks"
-  tld                           = "dev"
+  sld                           = "letterlarks"
+  tld                           = "com"
 }
 
 include {
