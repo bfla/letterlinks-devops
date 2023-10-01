@@ -40,10 +40,10 @@ resource "aws_s3_bucket_policy" "react-app" {
 EOF
 }
 
-resource "aws_s3_bucket_acl" "react-app" {
-  bucket = aws_s3_bucket.react-app.id
-  acl    = "private"
-}
+# resource "aws_s3_bucket_acl" "react-app" {
+#   bucket = aws_s3_bucket.react-app.id
+#   acl    = "private"
+# }
 
 resource "aws_s3_bucket_public_access_block" "react-app" {
   bucket = aws_s3_bucket.react-app.id
@@ -74,10 +74,10 @@ resource "aws_s3_bucket" "react-app-versions" {
   }
 }
 
-resource "aws_s3_bucket_acl" "react-app-versions" {
-  bucket = aws_s3_bucket.react-app-versions.id
-  acl    = "private"
-}
+# resource "aws_s3_bucket_acl" "react-app-versions" {
+#   bucket = aws_s3_bucket.react-app-versions.id
+#   acl    = "private"
+# }
 
 resource "aws_s3_bucket_public_access_block" "react-app-versions" {
   bucket = aws_s3_bucket.react-app-versions.id

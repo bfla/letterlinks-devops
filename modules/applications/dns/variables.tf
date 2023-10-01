@@ -14,6 +14,10 @@ variable "app_domain_name" {
   type = string
 }
 
+variable "splash_domain_name" {
+  type = string
+}
+
 # variable "elb_hostname" {
 #   type = string
 # }
@@ -34,6 +38,9 @@ variable "app_cloudfront_domain" {
   type = string
 }
 
+variable "splash_cloudfront_domain" {
+  type = string
+}
 # variable "gmail_verification_record" {
 #   type = string
 # }
