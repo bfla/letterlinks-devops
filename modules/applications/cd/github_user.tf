@@ -42,6 +42,25 @@ policy = <<EOF
       "Resource": [
         "${var.react_app_cloudfront_arn}"
       ]
+    },
+    {
+      "Action": [
+        "ecr:CompleteLayerUpload",
+        "ecr:GetAuthorizationToken",
+        "ecr:UploadLayerPart",
+        "ecr:InitiateLayerUpload",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:PutImage"
+      ],
+      "Effect": "Allow",
+      "Resource": ["*"]
+    },
+    {
+      "Action": [
+        "ecs:UpdateService"
+      ],
+      "Effect": "Allow",
+      "Resource": ["*"]
     }
   ]
 }

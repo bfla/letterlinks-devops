@@ -4,13 +4,13 @@ locals {
 }
 
 terraform {
-  source = "../../../modules/ecr"
+  source = "../../../modules/management"
   # Use the following for specifying a specific version
-  # source = "git@github.com:bfla/letterlinks-devops.git/modules/ecr?ref=v2.0.0"
+  # source = "git@github.com:bfla/letterlinks-devops.git/modules/applications?ref=v2.0.0"
 }
 
 inputs = {
-  stage = "${local.stage}"
+  staging_account_id = "986906465263"
 }
 
 include {

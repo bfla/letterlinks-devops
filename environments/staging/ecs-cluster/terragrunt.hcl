@@ -4,13 +4,14 @@ locals {
 }
 
 terraform {
-  source = "../../../modules/ecr"
+  source = "../../../modules/ecs-cluster"
   # Use the following for specifying a specific version
-  # source = "git@github.com:bfla/letterlinks-devops.git/modules/ecr?ref=v2.0.0"
+  # source = "git@github.com:bfla/letterlinks-devops.git/modules/ecs?ref=v2.0.0"
 }
 
 inputs = {
-  stage = "${local.stage}"
+  cluster_name = "${local.stage}"
+  image_tag = local.stage == "prod" ? "latest" : "staging"
 }
 
 include {

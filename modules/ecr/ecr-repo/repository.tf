@@ -5,6 +5,10 @@ data "aws_organizations_organization" "this" {}
 resource "aws_ecr_repository" "repo" {
   name                 = var.name
   image_tag_mutability = "MUTABLE"
+
+  # image_scanning_configuration {
+  #   scan_on_push = true
+  # }
 }
 
 # https://tech.scribd.com/blog/2020/orgwide-ecr.html

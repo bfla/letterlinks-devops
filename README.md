@@ -36,6 +36,9 @@ There are N Terraform modules under the `modules/` folder.  These modules are me
 ###### Examples:
 - `modules/s3`: Generic module that creates an S3 Bucket
 - `modules/ecr`: This module creates the ecr repos
+- `modules/secret-manager`: Setup Secret Manager in the account
+- `modeules/vpc`: Setup the VPC in the account
+- `modules/ecs-cluster`: Setup an ECS cluster in the account
 - `modules/applications`: This module creates everything related to the applications
 
 

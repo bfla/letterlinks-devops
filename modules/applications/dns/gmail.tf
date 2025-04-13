@@ -2,12 +2,25 @@
 #   allow_overwrite = true
 #   name            = var.domain
 #   records         = [
-#     var.gmail_verification_record
+#     var.gmail_mx_val
 #   ]
 #   ttl             = "300"
 #   type            = "TXT"
+#   priority        = "15"
 #   zone_id         = aws_route53_zone.domain.zone_id
 # }
+
+resource "aws_route53_record" "gmail-mx-records" {
+  allow_overwrite = true
+  name            = var.domain
+  records         = [
+    "1 SMTP.GOOGLE.COM.",
+    "15 ${var.gmail_mx_val}"
+  ]
+  ttl             = "300"
+  type            = "MX"
+  zone_id         = aws_route53_zone.domain.zone_id
+}
 
 # resource "aws_route53_record" "gmail-mx-records" {
 #   allow_overwrite = true

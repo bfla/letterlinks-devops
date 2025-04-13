@@ -18,6 +18,18 @@ variable "splash_domain_name" {
   type = string
 }
 
+variable "gmail_mx_val" {
+  type = string
+}
+
+variable "lb_hostname" {
+  type = string
+}
+
+variable "lb_zone_id"  {
+  type = string
+}
+
 # variable "elb_hostname" {
 #   type = string
 # }

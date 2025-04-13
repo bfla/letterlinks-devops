@@ -6,6 +6,7 @@ variable "region" {
 variable "repos" {
   type = list(string)
   default = [
-    "letterlinks-graphql"
+    "graphql",
+    "rpi",
   ]
 }

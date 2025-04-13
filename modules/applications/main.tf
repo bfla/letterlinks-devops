@@ -8,6 +8,7 @@ locals {
   splash_domain = "www.${var.sld}.${var.tld}"
   app_domain  = "app.${var.sld}.${var.tld}"
   api_domain  = "api.${var.sld}.${var.tld}"
+  private_data_bucket_name = "${var.stage}-private-data"
 }
 
 module "react-app" {
@@ -23,6 +24,23 @@ module "react-app" {
   # log_bucket_domain_name = data.aws_s3_bucket.logs.bucket_domain_name
 }
 
+module "graphql" {
+  source            = "./graphql"
+  app_port          = 8080
+  stage             = var.stage
+  aws_region        = var.region
+  vpc_id            = var.vpc_id
+  image_tag         = var.image_tag
+  ecs_cluster_name  = var.ecs_cluster_name
+  rds_instance_type = var.rds_instance_type
+  domain            = local.api_domain
+  memory            = var.app_memory
+  cpu               = var.app_cpu
+  acm_cert_arn      = module.dns.api_acm_cert_arn
+  private_data_bucket_name = local.private_data_bucket_name
+  # cdn_hostname      = module.file-storage.public_cdn_hostname
+}
+
 module "splash-page" {
   source = "./splash-page"
   stage = var.stage
@@ -33,15 +51,25 @@ module "splash-page" {
   tld             = var.tld
 }
 
+module "file-storage" {
+  source = "./file-storage"
+  stage = var.stage
+  region = var.region
+  private_data_bucket_name = local.private_data_bucket_name
+}
+
 module "dns" {
   source                = "./dns"
   stage                 = var.stage
   domain                = local.domain
   app_domain_name       = local.app_domain
   api_domain_name       = local.api_domain
+  lb_hostname            = module.graphql.lb_hostname
+  lb_zone_id             = module.graphql.lb_zone_id
   app_cloudfront_domain = module.react-app.cloudfront_domain
   splash_cloudfront_domain = module.splash-page.cloudfront_domain
   splash_domain_name    = local.splash_domain
+  gmail_mx_val         = var.gmail_mx_val
 }
 
 module "cd" {
