@@ -36,10 +36,11 @@ resource "aws_s3_bucket_public_access_block" "private" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_acl" "private" {
-  bucket = aws_s3_bucket.private.id
-  acl    = var.logging == true ? "log-delivery-write" : "private"
-}
+# FIXME
+# resource "aws_s3_bucket_acl" "private" {
+#   bucket = aws_s3_bucket.private.id
+#   acl    = var.logging == true ? "log-delivery-write" : "private"
+# }
 
 # resource "aws_s3_bucket_logging" "private" {
 #   count = var.logging == true ? 1 : 0

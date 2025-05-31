@@ -18,7 +18,7 @@ module "task_definition" {
   aws_region = var.aws_region
   log_group_name = aws_cloudwatch_log_group.this.name
   # container settings
-  entry_point = ["./start.sh"]
+  entry_point = ["./start-graphql.sh"]
   cpu = var.cpu
   memory = var.memory
   image_tag = var.image_tag

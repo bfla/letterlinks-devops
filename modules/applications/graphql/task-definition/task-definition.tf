@@ -69,6 +69,10 @@ resource "aws_ecs_task_definition" "this" {
           "value": "${var.rds_port}"
         },
         {
+          "name": "MONGO_TLS_CA_FILE_PATH",
+          "value": "/usr/src/app/mem/apps/graphql/certs/rds-combined-ca-bundle.pem"
+        },
+        {
           "name": "ALLOWED_HOST",
           "value": "${var.domain}"
         },

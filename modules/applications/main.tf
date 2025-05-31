@@ -8,7 +8,7 @@ locals {
   splash_domain = "www.${var.sld}.${var.tld}"
   app_domain  = "app.${var.sld}.${var.tld}"
   api_domain  = "api.${var.sld}.${var.tld}"
-  private_data_bucket_name = "${var.stage}-private-data"
+  private_data_bucket_name = "${var.stage}-mem-private-data"
 }
 
 module "react-app" {

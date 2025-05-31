@@ -7,7 +7,7 @@ variable "app_name" {
 variable "entry_point" {
   description = "The entry point for the container"
   type = list(string)
-  default = ["./start.sh", "8080"]
+  default = ["./start-graphql.sh"]
 }
 
 variable "task_exec_arn" {
