@@ -77,3 +77,7 @@ module "cd" {
   react_app_bucket_arn = module.react-app.bucket_arn
   react_app_cloudfront_arn = module.react-app.cloudfront_arn
 }
+
+module "pi" {
+  source = "./pi"
+}
